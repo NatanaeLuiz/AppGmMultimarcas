@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnEntrar"
         android:layout_width="146dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
