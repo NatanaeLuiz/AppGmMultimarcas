@@ -52,10 +52,10 @@ public class FormPessoa extends AppCompatActivity {
 
                 //VERIFICA SE E PARA SALVAR OU ALTERAR -> PESSOA
                 if ((btnVariavel.getText().toString()).equals("Salvar")){
-                    retornoDB = pessoaDAO.salvarPessoa(pessoa);
+                    retornoDB = pessoaDAO.salvarPessoaDAO(pessoa);
 
                     if (retornoDB == -1){
-                       alert("Erro ao Cadastrar!");
+                        alert("Erro ao Cadastrar!");
                     }else{
                         alert("Cadastrado Realizado com Sucesso!");
                     }

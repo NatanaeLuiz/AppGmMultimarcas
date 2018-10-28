@@ -6,13 +6,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/backgroudColor"
+    android:paddingTop="8dp"
+    android:paddingLeft="8dp"
+    android:paddingBottom="8dp"
+    android:paddingRight="8dp"
     tools:context=".FormPessoa">
 
     <EditText
         android:id="@+id/editNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="@string/nome"
         android:inputType="textPersonName" />
 
@@ -20,7 +23,6 @@
         android:id="@+id/editIdade"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="@string/idade"
         android:inputType="number" />
 
@@ -28,7 +30,6 @@
         android:id="@+id/editEndereco"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="@string/endereco"
         android:inputType="textPersonName"/>
 
@@ -36,13 +37,12 @@
         android:id="@+id/editTelefone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="@string/telefone"
-        android:inputType="textPersonName"  />
+        android:inputType="number"  />
 
     <Button
         android:id="@+id/btnVariavel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button" />
+        android:text="Salvar" />
 </LinearLayout>

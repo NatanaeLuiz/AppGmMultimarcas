@@ -11,7 +11,8 @@ public class PessoaDAO extends SQLiteOpenHelper {
 
     private static final String NOME_BANCO = "DB_GMmultimarcas.db";
     private static final int VERSION = 1;
-    private static final String TABELA = "PESSOA";
+
+    private static final String PESSOA_TABELA = "PESSOA";
     private static final String PESSOA_ID = "ID";
     private static final String PESSOA_NOME = "NOME";
     private static final String PESSOA_IDADE = "IDADE";
@@ -26,12 +27,12 @@ public class PessoaDAO extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         StringBuilder sql = new StringBuilder();
 
-        sql.append("CREATE TABLE " + TABELA + " (\n");
-        sql.append(PESSOA_ID + " INTEGER PRIMARY KEY AUTOINCREMENTO,\n");
-        sql.append(PESSOA_NOME + " TEXT,\n");
-        sql.append(PESSOA_IDADE + " INTEGER,\n");
-        sql.append(PESSOA_ENDERECO + " TEXT,\n");
-        sql.append(PESSOA_TELEFONE + " TEXT\n");
+        sql.append("CREATE TABLE IS NOT EXISTS " + PESSOA_TABELA + " (\n");
+        sql.append(" " + PESSOA_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\n");
+        sql.append(" " + PESSOA_NOME + " VARCHAR(100),\n");
+        sql.append(" " + PESSOA_IDADE + " INTEGER,\n");
+        sql.append(" " + PESSOA_ENDERECO + " VARCHAR(100),\n");
+        sql.append(" " + PESSOA_TELEFONE + " VARCHAR(20)\n");
         sql.append(");");
 
         db.execSQL(String.valueOf(sql));
@@ -39,12 +40,12 @@ public class PessoaDAO extends SQLiteOpenHelper {
 
     @Override //VERIFICA SE A TABELA JÁ ESTÁ CRIADA
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String sql = String.format("DROP TABLE IS EXISTS %s", TABELA);
+        String sql = String.format("DROP TABLE IS EXISTS %s", PESSOA_TABELA);
         db.execSQL(sql);
         onCreate(db);
     }
 
-    public long salvarPessoa(Pessoa pessoa){
+    public long salvarPessoaDAO(Pessoa pessoa){
         ContentValues values = new ContentValues();
         long retornoDB;
 
@@ -53,7 +54,7 @@ public class PessoaDAO extends SQLiteOpenHelper {
         values.put(PESSOA_ENDERECO,pessoa.getEndereco());
         values.put(PESSOA_TELEFONE,pessoa.getTelefone());
 
-        retornoDB = getWritableDatabase().insert(TABELA, null, values);
+        retornoDB = getWritableDatabase().insert(PESSOA_TABELA, null, values);
 
         return retornoDB;
     }
