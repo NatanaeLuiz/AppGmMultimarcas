@@ -59,8 +59,6 @@ public class FormPessoa extends AppCompatActivity {
                     }else{
                         alert("Cadastrado Realizado com Sucesso!");
                     }
-                }else{
-
                 }
                 finish();
             }
