@@ -60,12 +60,6 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "Pessoa{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", idade=" + idade +
-                ", endereco='" + endereco + '\'' +
-                ", telefone='" + telefone + '\'' +
-                '}';
+        return  nome.toString();
     }
 }

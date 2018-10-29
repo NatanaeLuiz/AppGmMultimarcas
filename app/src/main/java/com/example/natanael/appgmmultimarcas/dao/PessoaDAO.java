@@ -2,10 +2,13 @@ package com.example.natanael.appgmmultimarcas.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.natanael.appgmmultimarcas.model.Pessoa;
+
+import java.util.ArrayList;
 
 public class PessoaDAO extends SQLiteOpenHelper {
 
@@ -25,6 +28,7 @@ public class PessoaDAO extends SQLiteOpenHelper {
 
     @Override //CRIA TABELA NO BANCO
     public void onCreate(SQLiteDatabase db) {
+        /*
         StringBuilder sql = new StringBuilder();
 
         sql.append("CREATE TABLE IS NOT EXISTS " + PESSOA_TABELA + " (\n");
@@ -33,9 +37,16 @@ public class PessoaDAO extends SQLiteOpenHelper {
         sql.append(" " + PESSOA_IDADE + " INTEGER,\n");
         sql.append(" " + PESSOA_ENDERECO + " VARCHAR(100),\n");
         sql.append(" " + PESSOA_TELEFONE + " VARCHAR(20)\n");
-        sql.append(");");
+        sql.append(");");*/
 
-        db.execSQL(String.valueOf(sql));
+        String sqlProduto = "CREATE TABLE " + PESSOA_TABELA + " (" +
+                " " + PESSOA_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                " " + PESSOA_NOME + " VARCHAR(100), " +
+                " " + PESSOA_IDADE + " INTEGER, " +
+                " " + PESSOA_ENDERECO + " VARCHAR(100), " +
+                " " + PESSOA_TELEFONE + " VARCHAR(20) );";
+
+        db.execSQL(sqlProduto);
     }
 
     @Override //VERIFICA SE A TABELA JÁ ESTÁ CRIADA
@@ -57,5 +68,27 @@ public class PessoaDAO extends SQLiteOpenHelper {
         retornoDB = getWritableDatabase().insert(PESSOA_TABELA, null, values);
 
         return retornoDB;
+    }
+
+    public ArrayList<Pessoa> selectAllPessoas(){
+        String[] coluns = {PESSOA_ID, PESSOA_NOME, PESSOA_IDADE, PESSOA_ENDERECO, PESSOA_TELEFONE};
+
+        Cursor cursor = getWritableDatabase().query(PESSOA_TABELA,coluns,null,null,null,null,"upper(nome)",null);
+
+        ArrayList<Pessoa> listPessoa = new ArrayList<Pessoa>();
+
+        while (cursor.moveToNext()){
+            Pessoa pessoa = new Pessoa();
+
+            pessoa.setId(cursor.getInt(0));
+            pessoa.setNome(cursor.getString(1));
+            pessoa.setIdade(cursor.getInt(2));
+            pessoa.setEndereco(cursor.getString(3));
+            pessoa.setTelefone(cursor.getString(4));
+
+            listPessoa.add(pessoa);
+        }
+
+        return listPessoa;
     }
 }
