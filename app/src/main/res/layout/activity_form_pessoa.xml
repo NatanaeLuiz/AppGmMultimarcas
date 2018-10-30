@@ -10,7 +10,7 @@
     android:paddingLeft="8dp"
     android:paddingBottom="8dp"
     android:paddingRight="8dp"
-    tools:context=".FormPessoa">
+    tools:context=".activitie.FormPessoa">
 
     <EditText
         android:id="@+id/editNome"

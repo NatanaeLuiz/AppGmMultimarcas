@@ -28,7 +28,7 @@ public class PessoaDAO extends SQLiteOpenHelper {
 
     @Override //CRIA TABELA NO BANCO
     public void onCreate(SQLiteDatabase db) {
-        /*
+
         StringBuilder sql = new StringBuilder();
 
         sql.append("CREATE TABLE IS NOT EXISTS " + PESSOA_TABELA + " (\n");
@@ -37,16 +37,16 @@ public class PessoaDAO extends SQLiteOpenHelper {
         sql.append(" " + PESSOA_IDADE + " INTEGER,\n");
         sql.append(" " + PESSOA_ENDERECO + " VARCHAR(100),\n");
         sql.append(" " + PESSOA_TELEFONE + " VARCHAR(20)\n");
-        sql.append(");");*/
-
+        sql.append(");");
+        /*
         String sqlProduto = "CREATE TABLE " + PESSOA_TABELA + " (" +
                 " " + PESSOA_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
                 " " + PESSOA_NOME + " VARCHAR(100), " +
                 " " + PESSOA_IDADE + " INTEGER, " +
                 " " + PESSOA_ENDERECO + " VARCHAR(100), " +
-                " " + PESSOA_TELEFONE + " VARCHAR(20) );";
+                " " + PESSOA_TELEFONE + " VARCHAR(20) );";*/
 
-        db.execSQL(sqlProduto);
+        db.execSQL(sql.toString());
     }
 
     @Override //VERIFICA SE A TABELA JÁ ESTÁ CRIADA
@@ -56,6 +56,7 @@ public class PessoaDAO extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    // ---------- METODO SALVAR ----------
     public long salvarPessoaDAO(Pessoa pessoa){
         ContentValues values = new ContentValues();
         long retornoDB;
@@ -70,6 +71,34 @@ public class PessoaDAO extends SQLiteOpenHelper {
         return retornoDB;
     }
 
+    // ---------- METODO ALTERAR ----------
+    public long alterarPessoaDAO(Pessoa pessoa){
+        ContentValues values = new ContentValues();
+        long retornoDB;
+
+        values.put(PESSOA_NOME,pessoa.getNome());
+        values.put(PESSOA_IDADE,pessoa.getIdade());
+        values.put(PESSOA_ENDERECO,pessoa.getEndereco());
+        values.put(PESSOA_TELEFONE,pessoa.getTelefone());
+
+        String[] args = {String.valueOf(pessoa.getId())};
+        retornoDB = getWritableDatabase().update(PESSOA_TABELA, values, PESSOA_ID + " = ?", args);
+
+        return retornoDB;
+    }
+
+    // ---------- METODO EXCLUIR ----------
+    public long excluirPessoaDAO(Pessoa pessoa){
+
+        long retornoDB;
+
+        String[] args = {String.valueOf(pessoa.getId())};
+        retornoDB = getWritableDatabase().delete(PESSOA_TABELA,PESSOA_ID + " = ?", args);
+
+        return retornoDB;
+    }
+
+    // ---------- METODO QUANDO SALVAR ADICIONA A PESSOA NA TELA DE CLIENTE AUTOMATICAMENTE ----------
     public ArrayList<Pessoa> selectAllPessoas(){
         String[] coluns = {PESSOA_ID, PESSOA_NOME, PESSOA_IDADE, PESSOA_ENDERECO, PESSOA_TELEFONE};
 

@@ -10,7 +10,7 @@
     android:paddingLeft="8dp"
     android:paddingBottom="8dp"
     android:paddingRight="8dp"
-    tools:context=".ClienteActivity">
+    tools:context=".activitie.ClienteActivity">
 
     <ListView
         android:id="@+id/listPessoas"
@@ -21,6 +21,9 @@
         android:id="@+id/btnNovoCadastro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:background="@drawable/borda_redonda"
+        android:textSize="26dp"
+        android:textColor="@color/backgroudColor"
+        android:text="cadastrar" />
 
 </LinearLayout>
