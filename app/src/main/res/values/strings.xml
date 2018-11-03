@@ -4,5 +4,10 @@
     <string name="idade">Idade</string>
     <string name="endereco">Endereço</string>
     <string name="telefone">Telefone</string>
+    <string name="cadastrar">cadastrar</string>
+    <string name="vendas">Vendas</string>
+    <string name="produtos">Produtos</string>
+    <string name="clientes">Clientes</string>
+    <string name="relatorios">Relatorios</string>
 
 </resources>

@@ -31,7 +31,7 @@ public class PessoaDAO extends SQLiteOpenHelper {
 
         StringBuilder sql = new StringBuilder();
 
-        sql.append("CREATE TABLE IS NOT EXISTS " + PESSOA_TABELA + " (\n");
+        sql.append("CREATE TABLE " + PESSOA_TABELA + " (\n");
         sql.append(" " + PESSOA_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\n");
         sql.append(" " + PESSOA_NOME + " VARCHAR(100),\n");
         sql.append(" " + PESSOA_IDADE + " INTEGER,\n");

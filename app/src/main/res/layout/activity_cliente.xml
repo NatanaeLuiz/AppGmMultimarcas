@@ -15,7 +15,8 @@
     <ListView
         android:id="@+id/listPessoas"
         android:layout_width="match_parent"
-        android:layout_height="425dp" />
+        android:layout_height="415dp"
+        android:layout_marginBottom="15dp"/>
 
     <Button
         android:id="@+id/btnNovoCadastro"
@@ -24,6 +25,6 @@
         android:background="@drawable/borda_redonda"
         android:textSize="26dp"
         android:textColor="@color/backgroudColor"
-        android:text="cadastrar" />
+        android:text="@string/cadastrar" />
 
 </LinearLayout>
