@@ -12,19 +12,39 @@
     android:paddingRight="8dp"
     tools:context=".activitie.ClienteActivity">
 
-    <ListView
-        android:id="@+id/listPessoas"
-        android:layout_width="match_parent"
-        android:layout_height="415dp"
-        android:layout_marginBottom="15dp"/>
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="357dp"
+        android:layout_height="493dp"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/btnNovoCadastro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/borda_redonda"
-        android:textSize="26dp"
-        android:textColor="@color/backgroudColor"
-        android:text="@string/cadastrar" />
+        <ListView
+            android:id="@+id/listPessoas"
+            android:layout_width="347dp"
+            android:layout_height="478dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/btnNovoCad"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_add_black_24dp"
+            app:backgroundTint="@color/colorPrimaryDark"
+            app:layout_anchor="@+id/listPessoas"
+            app:layout_anchorGravity="right|bottom" />
+
+
+    </android.support.design.widget.CoordinatorLayout>
 </LinearLayout>

@@ -120,4 +120,33 @@ public class PessoaDAO extends SQLiteOpenHelper {
 
         return listPessoa;
     }
+
+    /*
+    @Override
+    public List<Pessoa> listarProdutosLike(String nome) {
+        List<Pessoa> produtos = new ArrayList<>();
+
+        //                    SEELCT * FROM produto WHERE descricao LIKE nome%;
+        String sqlConsulta = "SELECT * FROM "+criarBanco.PRODUTO_TABELA+" WHERE "+criarBanco.PRODUTO_DESC+" LIKE ?;";
+        String []args = { nome+"%" };
+
+        db = criarBanco.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sqlConsulta, args);
+
+        while (cursor.moveToNext())
+        {
+            Integer id = cursor.getInt(cursor.getColumnIndex(criarBanco.PRODUTO_ID));
+            String descricao = cursor.getString(cursor.getColumnIndex(criarBanco.PRODUTO_DESC));
+            float preco = cursor.getFloat(cursor.getColumnIndex(criarBanco.PRODUTO_PRECO));
+            Integer unidade = cursor.getInt(cursor.getColumnIndex(criarBanco.PRODUTO_UNID));
+
+            Produto produto = new Produto(id, descricao, preco, unidade);
+
+            produtos.add(produto);
+        }
+
+        return produtos;
+    }
+*/
+
 }

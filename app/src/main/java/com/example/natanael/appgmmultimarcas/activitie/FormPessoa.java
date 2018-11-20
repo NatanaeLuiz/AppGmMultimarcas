@@ -29,7 +29,7 @@ public class FormPessoa extends AppCompatActivity {
         altPessoa = (Pessoa) intent.getSerializableExtra("pessoa-enviada");
 
         this.pessoa = new Pessoa();//Instanceia a Class Pessoa
-        pessoaDAO = new PessoaDAO(FormPessoa.this); //Instanceia a Class Pessoa Passando a tela que estou Usando(FormPessoa)
+        this.pessoaDAO = new PessoaDAO(FormPessoa.this); //Instanceia a Class Pessoa Passando a tela que estou Usando(FormPessoa)
 
         editNome = (EditText) findViewById(R.id.editNome);
         editIdade = (EditText) findViewById(R.id.editIdade);
@@ -98,7 +98,6 @@ public class FormPessoa extends AppCompatActivity {
             }
         });
     }
-
 
     private void alert(String s){
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show();

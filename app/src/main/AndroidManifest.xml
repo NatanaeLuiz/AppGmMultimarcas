@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon_gm_round"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -16,9 +16,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activitie.MenuActivity" />
-        <activity android:name=".activitie.ClienteActivity" />
-        <activity android:name=".activitie.FormPessoa"></activity>
+
+        <!-- Activitys Menu -->
+        <activity android:name=".activitie.MenuActivity"
+            android:label="Menu">
+        </activity>
+
+        <!-- Activitys Lista Clientes -->
+        <activity android:name=".activitie.ClienteActivity"
+            android:label="Clientes"
+            android:parentActivityName=".activitie.MenuActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activitie.ClienteActivity">
+            </meta-data>
+        </activity>
+
+        <!-- Activitys CADASTRO/EDITAR -->
+        <activity android:name=".activitie.FormPessoa"
+            android:label=""
+            android:parentActivityName=".activitie.ClienteActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activitie.FormPessoa">
+            </meta-data>
+        </activity>
     </application>
 
 </manifest>

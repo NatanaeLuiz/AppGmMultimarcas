@@ -44,5 +44,7 @@
         android:id="@+id/btnVariavel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/borda_redonda"
+        android:textColor="@color/backgroudColor"
         android:text="Salvar" />
 </LinearLayout>

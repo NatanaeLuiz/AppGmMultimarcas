@@ -1,6 +1,8 @@
 package com.example.natanael.appgmmultimarcas.activitie;
 
+import android.Manifest;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -8,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 public class ClienteActivity extends AppCompatActivity {
 
     ListView listVisivel;
-    Button btnNovoCadastro;
+    FloatingActionButton btnNovoCadastro;
     Pessoa pessoa;
     PessoaDAO pessoaDAO;
     ArrayList<Pessoa> arrayListPessoa;
@@ -33,19 +34,21 @@ public class ClienteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cliente);
 
         listVisivel = (ListView) findViewById(R.id.listPessoas);
-        btnNovoCadastro = (Button) findViewById(R.id.btnNovoCadastro);
+        btnNovoCadastro = findViewById(R.id.btnNovoCad);
         registerForContextMenu(listVisivel);
 
-        //VAI PARA TELA FORMPESSOA PARA ADICIONAR UM NOVO USUARIO
+        //AÇÃO BOTÃO NOVO CADASTRO '+' VAI PARA TELA FORMPESSOA PARA ADICIONAR UM NOVO USUARIO
         btnNovoCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(ClienteActivity.this, FormPessoa.class);
                 startActivity(intent);
             }
         });
 
-        //ALTERAR UM USUARIO QUANDO SELECIONADO -> ENVIA PARA O FORMPESSOA
+
+        //ALTERAR UM USUARIO QUANDO CLICK CURTO -> ENVIA PARA A ACTIVITY FormPessoa (EDUTAR)
         listVisivel.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -57,7 +60,7 @@ public class ClienteActivity extends AppCompatActivity {
             }
         });
 
-        //EXCLUI UM USUARIO QUANDO PRECIONADO NA LISTA --> EXCLUIR
+        //EXCLUI UM USUARIO QUANDO CLICK LONGO NA LISTA --> EXCLUIR
         listVisivel.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -67,6 +70,7 @@ public class ClienteActivity extends AppCompatActivity {
         });
     }
 
+    //----------------------------------------------------------------------------------------------
     //METODO PARA PREENCHER(ATUALIZAR) A LISTA
     public void populaLista(){
         pessoaDAO = new PessoaDAO(ClienteActivity.this);
@@ -82,6 +86,43 @@ public class ClienteActivity extends AppCompatActivity {
 
         }
     }
+/*
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_lista_cliente, menu);
+
+        MenuItem item = menu.findItem(R.id.acao_pesquisar);
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(buscarTexto());
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    private SearchView.OnQueryTextListener buscarTexto() {
+        return new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                Toast.makeText(ClienteActivity.this,
+                        ""+query, Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                carregaDadosLike();
+                return false;
+            }
+        };
+    }
+
+    private  void carregaDadosLike(String nome){
+        PessoaDAO pessoaDAO = new PessoaDAO(this);
+        pessoa = pessoaDAO.listarProdutosLike(nome);
+        //Log.i("teste", "tamanho: "+produtos.size());
+        listView.setAdapter(new ProdutoBaseAdapter(this, produtos));
+    }*/
 
     protected void onResume(){
         super.onResume();
